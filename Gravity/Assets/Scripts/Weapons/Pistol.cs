@@ -6,7 +6,7 @@ using System.Collections;
 public class Pistol : Photon.MonoBehaviour {
 	public LineRenderer laser;
 	public Transform firepoint;
-	public float AimAssistConstant = .2f; // How much AutoAssist helps, where 1 is not at all, and 0 freezes rotation completely
+	public float AimAssistConstant = .35f; // How much AutoAssist helps, where 1 is not at all, and 0 freezes rotation completely
 	public int Range = 100;
 	public float Kickback = 2.5f;
 	public float power = 2.5f;
@@ -29,7 +29,7 @@ public class Pistol : Photon.MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetButtonDown("Fire1") && photonView.isMine){
-			// Graphics code here
+			PhotonNetwork.Instantiate("PistolShot", firepoint.position, firepoint.rotation, 0);
 		}
 		RaycastHit hit;
 		if (Physics.Raycast(transform.position, transform.forward, out hit, Range)){

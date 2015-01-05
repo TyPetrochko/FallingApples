@@ -8,3 +8,6 @@ Accomplished:
 -removed Halo-like AimAssist in favor of COD-like "looking down sights"
 -converted RigidBodyFPS script from javascript to C#
 -updated laser to stop at first collision point
+-added bounce pads
+-added to source control
+
