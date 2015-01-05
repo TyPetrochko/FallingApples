@@ -1,0 +1,9 @@
+accomplished:
+-got basic fps motor working with rigidbody instead of character controller
+-made it locally based, so the current script now works any character rotation (gravity will always be down relative to player)
+-researched collisions/local vs world coordinates
+-cleaned/commented code
+
+TODO
+
+Implement the shift + WASD to shift gravity/orientation. If possible, have the camera remain in the same position. Also, it would be cool to quickly shift gravity, but slowly shift the character's rotation. Implement guns, then multiplayer. Nicer models from the Unity Asset store might be cool, too.

@@ -1,0 +1,10 @@
+accomplished:
+-implemented forward gravity shift with Shift key using Dot and Cross products
+-tweaked grounding settings
+-copied C# mouselook script
+
+TODO
+
+Mouselook script has to be modified so that camera only rotates during a shift if it has to. A smooth transition would be nice. Character must be somewhat manipulatable in the air. Feeling helpless while jumping takes control away from the character - it's not so nice. A "max velocity" feature should be added so acceleration doesn't get out of control.
+
+Also, implement some better graphics.

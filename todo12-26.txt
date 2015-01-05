@@ -1,0 +1,8 @@
+*note: this was filled out post 12-27
+
+Accomplished:
+-Debugged multiplayer issues
+-Added a weapon/bullet system
+-Added a health system
+-Debugged issue with bullet self-collision
+-Added "Player" tag

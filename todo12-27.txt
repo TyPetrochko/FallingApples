@@ -1,0 +1,10 @@
+Accomplished:
+-imported metal textures pack
+-rebuilt map
+-retextured bullet
+-added primative laser sight
+
+Todo:
+Fix laser sights, find out why it's lagging so much. Also, fix the glitch where bullet explosions pause when looking away.
+
+In the near future, it will be time to replace the gun system. We need raycast guns, not collisions with bullets!

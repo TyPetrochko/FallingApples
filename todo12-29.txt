@@ -1,0 +1,6 @@
+Accomplished:
+-Started making the shiftplayer script go slowly
+
+TODO:
+
+Finish making the shiftplyer script go slowly.

@@ -1,0 +1,9 @@
+Accomplished:
+-finished smooth rotation
+-removed bullets in favor of raycasting for attack
+-can now "chain" two shifts, as long as they are along the same axis
+-added "kick" to pistol
+
+TODO
+
+Finish raycast attack so that it sends the character flying. Figure out why it gets buggy when more than one player. Also, implement a system like smash where your "mass" decreases as your health gets lower as more damage is taken, and sudden changes in velocity result in health decreases.

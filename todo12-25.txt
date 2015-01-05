@@ -1,0 +1,6 @@
+Accomplished:
+-Added basic multiplayer mechanics to game with Photon
+
+Todo:
+
+Must convert RigidbodyFPSController to C# so it doesn't have to go in Standard Assets. Next - adding simple weapons.

@@ -1,0 +1,10 @@
+*note: missed quite a few updates, so this covers multiple
+
+Accomplished:
+-debugged networking code
+-added networking prediction system for quicker rendering of other players
+-removed sliding from walls
+-added blowback to pistol shots
+-removed Halo-like AimAssist in favor of COD-like "looking down sights"
+-converted RigidBodyFPS script from javascript to C#
+-updated laser to stop at first collision point
