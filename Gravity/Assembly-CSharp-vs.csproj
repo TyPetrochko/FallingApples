@@ -109,6 +109,7 @@
      <Compile Include="Assets\Scripts\RandomMatchmaker.cs" />
      <Compile Include="Assets\Scripts\RigidBodyFPS.cs" />
      <Compile Include="Assets\Scripts\ShiftMouseLook.cs" />
+     <Compile Include="Assets\Scripts\Teleporter.cs" />
      <Compile Include="Assets\Scripts\TerrainGenerator.cs" />
      <Compile Include="Assets\Scripts\Weapons\Autodestroy.cs" />
      <Compile Include="Assets\Scripts\Weapons\Bullet.cs" />

@@ -8,11 +8,15 @@ public class RigidBodyFPS : MonoBehaviour {
 	public bool canJump = true;
 	public float jumpHeight = .5f;
 	public bool grounded = false;
-	// A lower value means the character can walk up slopes
-	public float slopeConstant = .1f;
+	public float slopeConstant = .1f; // A lower value means the character can walk up slopes
 	public float airControlHandicap = .1f;
 	public float speedMultiplierConstant = 1f;
+	public float doubleTapSpeed = .3f;
+	public float sprintSpeed = 2f;
 
+	private float sprintMultiplier = 1f;
+	private bool doubleTap = false;
+	private bool sprinting = false;
 
 	private Vector3 targetVelocity;
 	private Vector3 velocity;
@@ -28,7 +32,20 @@ public class RigidBodyFPS : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if(Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical")>0){
+			if (doubleTap){
+				doubleTap = false;
+				sprinting = true;
+				sprintMultiplier = sprintSpeed;
+				return;
+			}else{
+				doubleTap = true;
+				StartCoroutine(DisableDoubleTap());
+			}
+		}else if (Input.GetAxisRaw("Vertical")<1){
+			sprintMultiplier = 1f;
+			sprinting = false;
+		}
 	}
 
 	void FixedUpdate(){
@@ -39,7 +56,7 @@ public class RigidBodyFPS : MonoBehaviour {
 			
 			// Convert it to world coordinates
 			targetVelocity = transform.TransformDirection(targetVelocity);
-			targetVelocity *= speed*speedMultiplierConstant;
+			targetVelocity *= speed*speedMultiplierConstant*sprintMultiplier;
 
 			
 			// Apply a force that attempts to reach our target velocity
@@ -100,6 +117,13 @@ public class RigidBodyFPS : MonoBehaviour {
 			grounded = true;	
 		} else{
 			rigidbody.AddRelativeForce(new Vector3 (0, -gravity * rigidbody.mass, 0));	
+		}
+	}
+
+	IEnumerator DisableDoubleTap(){
+		yield return new WaitForSeconds(doubleTapSpeed);
+		if (!sprinting){
+			doubleTap=false;
 		}
 	}
 }
