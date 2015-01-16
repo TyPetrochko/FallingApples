@@ -15,8 +15,10 @@ public class Teleporter : MonoBehaviour {
 
 	public void OnTriggerEnter(Collider c){
 		if(c.gameObject.tag == "Player" && destination !=null){
-			c.gameObject.transform.rotation = destination.rotation;
-			c.gameObject.transform.position = destination.position;
+			Vector3 localVelocity = c.transform.TransformVector(c.rigidbody.velocity);
+			c.transform.position = destination.position;
+			c.transform.rotation = destination.rotation;
+			c.rigidbody.velocity = c.transform.TransformVector(localVelocity);
 		}
 	}
 

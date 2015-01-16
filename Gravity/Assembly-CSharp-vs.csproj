@@ -111,6 +111,7 @@
      <Compile Include="Assets\Scripts\ShiftMouseLook.cs" />
      <Compile Include="Assets\Scripts\Teleporter.cs" />
      <Compile Include="Assets\Scripts\TerrainGenerator.cs" />
+     <Compile Include="Assets\Scripts\UI\AllGUI.cs" />
      <Compile Include="Assets\Scripts\Weapons\Autodestroy.cs" />
      <Compile Include="Assets\Scripts\Weapons\Bullet.cs" />
      <Compile Include="Assets\Scripts\Weapons\LaserSight.cs" />

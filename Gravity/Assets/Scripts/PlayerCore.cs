@@ -23,6 +23,7 @@ public class PlayerCore : Photon.MonoBehaviour {
 		if (health <= 0){
 			Respawn();
 		}
+
 	}
 
 	void Respawn(){

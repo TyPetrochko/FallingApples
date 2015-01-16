@@ -50,9 +50,9 @@
      <Compile Include="Assets\Scripts\Deprecated\MyCharController.js" />
      <Compile Include="Assets\Scripts\Deprecated\RigidbodyFPSController.js" />
      <Compile Include="Assets\Scripts\Deprecated\ShiftPlayer.js" />
+     <Compile Include="Assets\Scripts\Deprecated\ShiftPlayerCam[Conflict].js" />
      <Compile Include="Assets\Scripts\Deprecated\WalkOnWallsMotor.js" />
      <Compile Include="Assets\Scripts\ShiftPlayerCam.js" />
-     <Compile Include="Assets\Scripts\ShiftPlayerCam[Conflict].js" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />
