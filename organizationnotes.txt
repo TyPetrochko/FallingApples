@@ -1,4 +1,0 @@
-Note:
-
--RigidbodyFPSController is stored in Standard Assets because it is in a different scripting language from the other scripts. 
--Player prefab is in Photon Resources folder, so that Photon Instantiate function will properly work.
