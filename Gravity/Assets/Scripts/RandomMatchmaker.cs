@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class RandomMatchmaker : MonoBehaviour {
 	public GameObject Crosshairs;
@@ -10,15 +11,10 @@ public class RandomMatchmaker : MonoBehaviour {
 		PhotonNetwork.logLevel = PhotonLogLevel.ErrorsOnly;
 		PhotonNetwork.ConnectUsingSettings("0.1");
 	}
-
-	void OnGUI()
-	{
-		GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
-	}
+	
 
 	// Update is called once per frame
 	void Update () {
-
 	}
 
 	void OnJoinedLobby()

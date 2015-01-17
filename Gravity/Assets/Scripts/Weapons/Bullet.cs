@@ -23,7 +23,7 @@ public class Bullet : Photon.MonoBehaviour {
 			if(!isBulletMine && isPlayerMine){
 				// The bullet isn't mine, but the player is
 				PlayerCore h = col.gameObject.GetComponent<PlayerCore>();
-				h.health -= 5;
+				h.healthMass -= 5;
 			} else if (isBulletMine && !isPlayerMine){
 				// The bullet is mine, but the player isn't
 

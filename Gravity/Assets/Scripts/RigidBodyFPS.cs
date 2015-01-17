@@ -13,10 +13,12 @@ public class RigidBodyFPS : MonoBehaviour {
 	public float speedMultiplierConstant = 1f;
 	public float doubleTapSpeed = .3f;
 	public float sprintSpeed = 2f;
+	public float constantVelocityInfluence = .4f;// A value closer to one decreases the effect of a nudge
 
 	private float sprintMultiplier = 1f;
 	private bool doubleTap = false;
 	private bool sprinting = false;
+	private PlayerCore pc;
 
 	private Vector3 targetVelocity;
 	private Vector3 velocity;
@@ -28,6 +30,7 @@ public class RigidBodyFPS : MonoBehaviour {
 	void Start () {
 		rigidbody.freezeRotation = true;
 		rigidbody.useGravity = false;
+		pc = GetComponent<PlayerCore>();
 	}
 	
 	// Update is called once per frame
@@ -49,25 +52,32 @@ public class RigidBodyFPS : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
+		// Calculate how fast we should be moving
+		targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+		
+		// Convert it to world coordinates
+		targetVelocity = transform.TransformDirection(targetVelocity);
+		targetVelocity *= speed*speedMultiplierConstant*sprintMultiplier;
+		
+		
+		// Use a force that attempts to reach our target velocity
+		velocity = rigidbody.velocity;
+		velocityChange = (targetVelocity - velocity);
+		velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
+		velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
+		velocityChange.y = Mathf.Clamp(velocityChange.y, -maxVelocityChange, maxVelocityChange);
+
+
+		// When character is VERY damaged, they can't change their speed as quickly
+		float damageBias = (pc.healthMass/pc.maxHealthMass)*constantVelocityInfluence;
+		// Convert back to local coordinates
+		Vector3 directionToPush  = transform.InverseTransformDirection(velocityChange)*damageBias;
+		directionToPush.y = 0;
+
 		if (grounded)
 		{
-			// Calculate how fast we should be moving
-			targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-			
-			// Convert it to world coordinates
-			targetVelocity = transform.TransformDirection(targetVelocity);
-			targetVelocity *= speed*speedMultiplierConstant*sprintMultiplier;
 
-			
-			// Apply a force that attempts to reach our target velocity
-			velocity = rigidbody.velocity;
-			velocityChange = (targetVelocity - velocity);
-			velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
-			velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-			velocityChange.y = Mathf.Clamp(velocityChange.y, -maxVelocityChange, maxVelocityChange);
-			
-			// Convert back to local coordinates
-			rigidbody.AddRelativeForce(transform.InverseTransformDirection(velocityChange), ForceMode.VelocityChange);
+			rigidbody.AddRelativeForce(directionToPush, ForceMode.VelocityChange);
 			
 			// Jump
 			if (canJump && Input.GetButton("Jump"))
@@ -81,23 +91,8 @@ public class RigidBodyFPS : MonoBehaviour {
 			// We apply gravity manually for more tuning control
 			rigidbody.AddRelativeForce(new Vector3 (0, -gravity * rigidbody.mass, 0));	
 			
-			// Calculate how fast we should be moving
-			targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-			
-			// Convert it to world coordinates
-			targetVelocity = transform.TransformDirection(targetVelocity);
-			targetVelocity *= speed;
-			
-			// Apply a force that attempts to reach our target velocity
-			velocity = rigidbody.velocity;
-			velocityChange = (targetVelocity - velocity);
-			velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
-			velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-			velocityChange.y = Mathf.Clamp(velocityChange.y, -maxVelocityChange, maxVelocityChange);
-			
-			// Convert back to local coordinates
-			rigidbody.AddRelativeForce(new Vector3(transform.InverseTransformDirection(velocityChange).x, 0, transform.InverseTransformDirection(velocityChange).z)*airControlHandicap, ForceMode.VelocityChange);
-			
+			rigidbody.AddRelativeForce(directionToPush*airControlHandicap, ForceMode.VelocityChange);
+
 			
 		}
 		grounded=false;
@@ -116,7 +111,7 @@ public class RigidBodyFPS : MonoBehaviour {
 		if(transform.InverseTransformDirection(collision.contacts[0].normal).y>.1){
 			grounded = true;	
 		} else{
-			rigidbody.AddRelativeForce(new Vector3 (0, -gravity * rigidbody.mass, 0));	
+			//rigidbody.AddRelativeForce(new Vector3 (0, -gravity * rigidbody.mass, 0));	
 		}
 	}
 

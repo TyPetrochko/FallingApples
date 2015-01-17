@@ -9,7 +9,8 @@ public class Pistol : Photon.MonoBehaviour {
 	public float AimAssistConstant = .35f; // How much AutoAssist helps, where 1 is not at all, and 0 freezes rotation completely
 	public int Range = 100;
 	public float Kickback = 2.5f;
-	public float power = 2.5f;
+	public float power = 30f;
+	public float damage = 5f;
 	public float zoomFOV = 30;
 	public float zoomSpeed = 5;
 	private float maxPOV;
@@ -32,7 +33,7 @@ public class Pistol : Photon.MonoBehaviour {
 			PhotonNetwork.Instantiate("PistolShot", firepoint.position, firepoint.rotation, 0);
 		}
 		RaycastHit hit;
-		if (Physics.Raycast(transform.position, transform.forward, out hit, Range)){
+		if (Physics.Raycast(firepoint.position, firepoint.forward, out hit, Range)){
 			laser.SetPosition(1, new Vector3(0, 0, hit.distance));
 			GameObject obj = hit.collider.gameObject;
 			if(Input.GetButtonDown("Fire1")  && photonView.isMine){
@@ -43,9 +44,9 @@ public class Pistol : Photon.MonoBehaviour {
 				if (obj.tag == "Player"){
 
 					// Code for successful hit here!
-					Vector3 blastDirection = hit.point-transform.position;
+					Vector3 blastDirection = hit.point-firepoint.position;
 					obj.GetPhotonView().RPC("Nudge", PhotonTargets.AllViaServer, new object[] {blastDirection, power});
-					obj.GetPhotonView().RPC("Damage", PhotonTargets.AllViaServer, new object[] {5.0f});
+					obj.GetPhotonView().RPC("Damage", PhotonTargets.AllViaServer, new object[] {damage});
 					Debug.Log("HIT!");
 				}
 				PhotonNetwork.Instantiate("Explosion", hit.point, Quaternion.identity, 0);
