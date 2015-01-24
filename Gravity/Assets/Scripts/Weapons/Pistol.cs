@@ -57,6 +57,9 @@ public class Pistol : Photon.MonoBehaviour {
 				RemoveAimAssist();
 			}
 		}
+		else {
+			laser.SetPosition(1, new Vector3(0, 0, Range));
+		}
 	}
 
 	void AimAssist(){

@@ -18,7 +18,7 @@ public class Teleporter : MonoBehaviour {
 			Vector3 localVelocity = c.transform.TransformVector(c.rigidbody.velocity);
 			c.transform.position = destination.position;
 			c.transform.rotation = destination.rotation;
-			c.rigidbody.velocity = c.transform.TransformVector(localVelocity);
+			c.rigidbody.velocity = c.transform.InverseTransformVector(localVelocity);
 		}
 	}
 
