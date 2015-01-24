@@ -119,6 +119,7 @@
      <Compile Include="Assets\Scripts\Weapons\LaserSight.cs" />
      <Compile Include="Assets\Scripts\Weapons\Pistol.cs" />
      <Compile Include="Assets\Scripts\Weapons\Shotgun.cs" />
+     <Compile Include="Assets\Scripts\Weapons\WeaponChanger.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />
