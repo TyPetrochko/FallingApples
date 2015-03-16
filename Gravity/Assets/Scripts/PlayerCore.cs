@@ -40,11 +40,7 @@ public class PlayerCore : Photon.MonoBehaviour {
 
 	[RPC]
 	void Nudge(Vector3 direction, float power){
-		if(photonView.isMine){
-			rigidbody.velocity += direction.normalized*power;
-		}else{
-			//GetComponent<NetworkCharacter>().veloc += direction*power;
-		}
+		rigidbody.AddForce(direction.normalized*power, ForceMode.VelocityChange);
 	}
 	[RPC]
 	void Damage (float damage) {

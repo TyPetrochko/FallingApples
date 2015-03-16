@@ -1,23 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RigidBodyFPS : MonoBehaviour {
+public class RigidBodyFPS : Photon.MonoBehaviour {
 	public float speed = 10.0f;
 	public float gravity = 10.0f;
 	public float maxVelocityChange = 10.0f;
+
 	public bool canJump = true;
 	public float jumpHeight = .5f;
+	public float jumpTimeOffset = .2f; // If you hit jump, the time window in which you have to hit the ground
+
 	public bool grounded = false;
 	public float slopeConstant = .1f; // A lower value means the character can walk up slopes
 	public float airControlHandicap = .1f;
 	public float speedMultiplierConstant = 1f;
 	public float doubleTapSpeed = .3f;
-	public float sprintSpeed = 2f;
 	public float constantVelocityInfluence = .4f;// A value closer to one decreases the effect of a nudge
 
-	private float sprintMultiplier = 1f;
+
+	private float jumpTimer;
 	private bool doubleTap = false;
-	private bool sprinting = false;
+
+
 	private PlayerCore pc;
 
 	private Vector3 targetVelocity;
@@ -31,70 +35,70 @@ public class RigidBodyFPS : MonoBehaviour {
 		rigidbody.freezeRotation = true;
 		rigidbody.useGravity = false;
 		pc = GetComponent<PlayerCore>();
+		jumpTimer = 0f;
+		if(photonView.isMine){
+			StartCoroutine(handleJumping());
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical")>0){
-			if (doubleTap){
-				doubleTap = false;
-				sprinting = true;
-				sprintMultiplier = sprintSpeed;
-				return;
-			}else{
-				doubleTap = true;
-				StartCoroutine(DisableDoubleTap());
-			}
-		}else if (Input.GetAxisRaw("Vertical")<1){
-			sprintMultiplier = 1f;
-			sprinting = false;
-		}
+
 	}
 
 	void FixedUpdate(){
-		// Calculate how fast we should be moving
-		targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-		
-		// Convert it to world coordinates
-		targetVelocity = transform.TransformDirection(targetVelocity);
-		targetVelocity *= speed*speedMultiplierConstant*sprintMultiplier;
-		
-		
-		// Use a force that attempts to reach our target velocity
-		velocity = rigidbody.velocity;
-		velocityChange = (targetVelocity - velocity);
-		velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
-		velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-		velocityChange.y = Mathf.Clamp(velocityChange.y, -maxVelocityChange, maxVelocityChange);
+		// Only tamper with velocity when we're trying to move
+		if(photonView.isMine && (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)){
 
-
-		// When character is VERY damaged, they can't change their speed as quickly
-		float damageBias = (pc.healthMass/pc.maxHealthMass)*constantVelocityInfluence;
-		// Convert back to local coordinates
-		Vector3 directionToPush  = transform.InverseTransformDirection(velocityChange)*damageBias;
-		directionToPush.y = 0;
-
-		if (grounded)
-		{
-
-			rigidbody.AddRelativeForce(directionToPush, ForceMode.VelocityChange);
+			// Calculate how fast we should be moving
+			targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 			
-			// Jump
-			if (canJump && Input.GetButton("Jump"))
+			// Convert it to world coordinates
+			targetVelocity = transform.TransformDirection(targetVelocity);
+			targetVelocity *= speed*speedMultiplierConstant;
+			
+			
+			// Use a force that attempts to reach our target velocity
+			velocity = rigidbody.velocity;
+			velocityChange = (targetVelocity - velocity);
+			velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
+			velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
+			velocityChange.y = Mathf.Clamp(velocityChange.y, -maxVelocityChange, maxVelocityChange);
+
+
+			// When character is VERY damaged, they can't change their speed as quickly
+			float damageBias = (pc.healthMass/pc.maxHealthMass)*constantVelocityInfluence;
+			// Convert back to local coordinates
+			Vector3 directionToPush  = transform.InverseTransformDirection(velocityChange)*damageBias;
+			directionToPush.y = 0;
+			if (grounded)
 			{
-				grounded=false;
-				// Calculate direction to move in local coordinates, then convert to world
-				localDirection = transform.InverseTransformDirection(rigidbody.velocity) + new Vector3(0, CalculateJumpVerticalSpeed(), 0);
-				rigidbody.velocity = transform.TransformDirection(localDirection);
+				rigidbody.AddRelativeForce(directionToPush, ForceMode.VelocityChange);
+			}else{
+				rigidbody.AddRelativeForce(directionToPush*airControlHandicap, ForceMode.VelocityChange);
 			}
-		} else {
-			// We apply gravity manually for more tuning control
-			rigidbody.AddRelativeForce(new Vector3 (0, -gravity * rigidbody.mass, 0));	
-			
-			rigidbody.AddRelativeForce(directionToPush*airControlHandicap, ForceMode.VelocityChange);
+		}else{
+			Vector3 localVelocity = transform.InverseTransformDirection(rigidbody.velocity);
+			// We don't want to make changes to Y direction
+			localVelocity.y = 0;
 
-			
+			Vector3 directionToPush = -localVelocity*.1f;
+			if(!grounded){
+				directionToPush *= airControlHandicap;
+			}
+			rigidbody.AddRelativeForce(directionToPush, ForceMode.VelocityChange);
+
+
 		}
+		// Jump
+		if (photonView.isMine && Input.GetButton("Jump") && canJump)
+		{
+			jumpTimer = jumpTimeOffset;
+		}
+
+
+		// We apply gravity manually for more tuning control
+		rigidbody.AddRelativeForce(new Vector3 (0, -gravity * rigidbody.mass, 0));
 		grounded=false;
 	}
 
@@ -115,10 +119,24 @@ public class RigidBodyFPS : MonoBehaviour {
 		}
 	}
 
-	IEnumerator DisableDoubleTap(){
-		yield return new WaitForSeconds(doubleTapSpeed);
-		if (!sprinting){
-			doubleTap=false;
+	IEnumerator handleJumping () {
+		while(true){
+			if(jumpTimer>0){
+
+				if (grounded)
+				{
+					grounded=false;
+					jumpTimer = 0f;
+					// Calculate direction to move in local coordinates, then convert to world
+					localDirection = transform.InverseTransformDirection(rigidbody.velocity) + new Vector3(0, CalculateJumpVerticalSpeed(), 0);
+					rigidbody.velocity = transform.TransformDirection(localDirection);
+				}else {
+					jumpTimer -= .05f;
+				}
+			}
+
+			yield return new WaitForSeconds(.05f);
 		}
 	}
+
 }

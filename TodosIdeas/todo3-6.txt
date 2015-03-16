@@ -1,0 +1,10 @@
+Accomplished:
+-configured an "offline mode" (single boolean value) in randommatchmaker
+-created a "target practice" object that behaves like a floating capsule
+-debugged shotgun
+-changed UI so there's now a universal UI object for all objects to access
+-created a separate Aim-Assist script that now handles all aim-assisting for weapons
+-edited reticle to be white so its color can be changed
+
+TODO:
+Merge the Pistol and Shotgun code into a general Gun script that can be inherited. Add dynamic reticule, and graphics to pistol and shotgun firing. Also fix delay when shooting another character over network.

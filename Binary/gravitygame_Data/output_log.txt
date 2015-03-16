@@ -20,52 +20,190 @@ Platform assembly: C:\Users\Tyler\Google Drive\CodingProjects\Gravity Game\Binar
 Loading C:\Users\Tyler\Google Drive\CodingProjects\Gravity Game\Binary\gravitygame_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\Tyler\Google Drive\CodingProjects\Gravity Game\Binary\gravitygame_Data\Managed\Photon3Unity3D.dll (this message is harmless)
 Loading C:\Users\Tyler\Google Drive\CodingProjects\Gravity Game\Binary\gravitygame_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.124 seconds
+- Completed reload, in  0.075 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 Platform assembly: C:\Users\Tyler\Google Drive\CodingProjects\Gravity Game\Binary\gravitygame_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Tyler\Google Drive\CodingProjects\Gravity Game\Binary\gravitygame_Data\Managed\System.dll (this message is harmless)
-UnloadTime: 4.687750 ms
+UnloadTime: 6.670219 ms
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 716.
-Total: 0.806095 ms (FindLiveObjects: 0.053687 ms CreateObjectMapping: 0.029212 ms MarkObjects: 0.234880 ms  DeleteObjects: 0.013421 ms)
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 725.
+Total: 0.898073 ms (FindLiveObjects: 0.047370 ms CreateObjectMapping: 0.018158 ms MarkObjects: 0.202510 ms  DeleteObjects: 0.012237 ms)
 
 Joined room
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
-PhotonView register is ignored, because viewID is 0. No id assigned yet to: View (0)0 on Pistol(Clone) (scene)
+NullReferenceException: Object reference not set to an instance of an object
+  at NetworkCharacter.OnPhotonSerializeView (.PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[],System.Exception&)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+  at System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  at PhotonView.ExecuteComponentOnSerialize (UnityEngine.Component component, .PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeComponent (UnityEngine.Component component, .PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeView (.PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnSerializeRead (ExitGames.Client.Photon.Hashtable data, .PhotonPlayer sender, Int32 networkTime, Int16 correctPrefix) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnEvent (ExitGames.Client.Photon.EventData photonEvent) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PeerBase.DeserializeMessageAndCallback (System.Byte[] inBuff) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.EnetPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PhotonPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at PhotonHandler.Update () [0x00000] in <filename unknown>:0 
  
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+(Filename:  Line: -1)
 
-PhotonView register is ignored, because viewID is 0. No id assigned yet to: View (0)0 on Shotgun(Clone) (scene)
+NullReferenceException: Object reference not set to an instance of an object
+  at NetworkCharacter.OnPhotonSerializeView (.PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[],System.Exception&)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+  at System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  at PhotonView.ExecuteComponentOnSerialize (UnityEngine.Component component, .PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeComponent (UnityEngine.Component component, .PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeView (.PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnSerializeRead (ExitGames.Client.Photon.Hashtable data, .PhotonPlayer sender, Int32 networkTime, Int16 correctPrefix) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnEvent (ExitGames.Client.Photon.EventData photonEvent) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PeerBase.DeserializeMessageAndCallback (System.Byte[] inBuff) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.EnetPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PhotonPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at PhotonHandler.Update () [0x00000] in <filename unknown>:0 
  
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+(Filename:  Line: -1)
 
-PhotonView register is ignored, because viewID is 0. No id assigned yet to: View (0)0 on Pistol(Clone) (scene)
+NullReferenceException: Object reference not set to an instance of an object
+  at NetworkCharacter.OnPhotonSerializeView (.PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[],System.Exception&)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+  at System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  at PhotonView.ExecuteComponentOnSerialize (UnityEngine.Component component, .PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeComponent (UnityEngine.Component component, .PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeView (.PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnSerializeRead (ExitGames.Client.Photon.Hashtable data, .PhotonPlayer sender, Int32 networkTime, Int16 correctPrefix) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnEvent (ExitGames.Client.Photon.EventData photonEvent) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PeerBase.DeserializeMessageAndCallback (System.Byte[] inBuff) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.EnetPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PhotonPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at PhotonHandler.Update () [0x00000] in <filename unknown>:0 
  
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+(Filename:  Line: -1)
 
-PhotonView register is ignored, because viewID is 0. No id assigned yet to: View (0)0 on Pistol(Clone) (scene)
+NullReferenceException: Object reference not set to an instance of an object
+  at NetworkCharacter.OnPhotonSerializeView (.PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[],System.Exception&)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+  at System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  at PhotonView.ExecuteComponentOnSerialize (UnityEngine.Component component, .PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeComponent (UnityEngine.Component component, .PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeView (.PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnSerializeRead (ExitGames.Client.Photon.Hashtable data, .PhotonPlayer sender, Int32 networkTime, Int16 correctPrefix) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnEvent (ExitGames.Client.Photon.EventData photonEvent) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PeerBase.DeserializeMessageAndCallback (System.Byte[] inBuff) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.EnetPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PhotonPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at PhotonHandler.Update () [0x00000] in <filename unknown>:0 
  
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+(Filename:  Line: -1)
 
-PhotonView register is ignored, because viewID is 0. No id assigned yet to: View (0)0 on Pistol(Clone) (scene)
+NullReferenceException: Object reference not set to an instance of an object
+  at NetworkCharacter.OnPhotonSerializeView (.PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[],System.Exception&)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+  at System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  at PhotonView.ExecuteComponentOnSerialize (UnityEngine.Component component, .PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeComponent (UnityEngine.Component component, .PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeView (.PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnSerializeRead (ExitGames.Client.Photon.Hashtable data, .PhotonPlayer sender, Int32 networkTime, Int16 correctPrefix) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnEvent (ExitGames.Client.Photon.EventData photonEvent) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PeerBase.DeserializeMessageAndCallback (System.Byte[] inBuff) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.EnetPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PhotonPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at PhotonHandler.Update () [0x00000] in <filename unknown>:0 
  
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+(Filename:  Line: -1)
 
-PhotonView register is ignored, because viewID is 0. No id assigned yet to: View (0)0 on Pistol(Clone) (scene)
+NullReferenceException: Object reference not set to an instance of an object
+  at NetworkCharacter.OnPhotonSerializeView (.PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[],System.Exception&)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+  at System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  at PhotonView.ExecuteComponentOnSerialize (UnityEngine.Component component, .PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeComponent (UnityEngine.Component component, .PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeView (.PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnSerializeRead (ExitGames.Client.Photon.Hashtable data, .PhotonPlayer sender, Int32 networkTime, Int16 correctPrefix) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnEvent (ExitGames.Client.Photon.EventData photonEvent) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PeerBase.DeserializeMessageAndCallback (System.Byte[] inBuff) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.EnetPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PhotonPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at PhotonHandler.Update () [0x00000] in <filename unknown>:0 
  
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+(Filename:  Line: -1)
 
-PhotonView register is ignored, because viewID is 0. No id assigned yet to: View (0)0 on Pistol(Clone) (scene)
+NullReferenceException: Object reference not set to an instance of an object
+  at NetworkCharacter.OnPhotonSerializeView (.PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[],System.Exception&)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+  at System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  at PhotonView.ExecuteComponentOnSerialize (UnityEngine.Component component, .PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeComponent (UnityEngine.Component component, .PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeView (.PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnSerializeRead (ExitGames.Client.Photon.Hashtable data, .PhotonPlayer sender, Int32 networkTime, Int16 correctPrefix) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnEvent (ExitGames.Client.Photon.EventData photonEvent) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PeerBase.DeserializeMessageAndCallback (System.Byte[] inBuff) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.EnetPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PhotonPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at PhotonHandler.Update () [0x00000] in <filename unknown>:0 
  
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+(Filename:  Line: -1)
 
-PhotonView register is ignored, because viewID is 0. No id assigned yet to: View (0)0 on Shotgun(Clone) (scene)
+NullReferenceException: Object reference not set to an instance of an object
+  at NetworkCharacter.OnPhotonSerializeView (.PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[],System.Exception&)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+  at System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  at PhotonView.ExecuteComponentOnSerialize (UnityEngine.Component component, .PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeComponent (UnityEngine.Component component, .PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeView (.PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnSerializeRead (ExitGames.Client.Photon.Hashtable data, .PhotonPlayer sender, Int32 networkTime, Int16 correctPrefix) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnEvent (ExitGames.Client.Photon.EventData photonEvent) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PeerBase.DeserializeMessageAndCallback (System.Byte[] inBuff) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.EnetPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PhotonPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at PhotonHandler.Update () [0x00000] in <filename unknown>:0 
  
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+(Filename:  Line: -1)
 
-Platform assembly: C:\Users\Tyler\Google Drive\CodingProjects\Gravity Game\Binary\gravitygame_Data\Managed\Boo.Lang.dll (this message is harmless)
+NullReferenceException: Object reference not set to an instance of an object
+  at NetworkCharacter.OnPhotonSerializeView (.PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[],System.Exception&)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+  at System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  at PhotonView.ExecuteComponentOnSerialize (UnityEngine.Component component, .PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeComponent (UnityEngine.Component component, .PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeView (.PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnSerializeRead (ExitGames.Client.Photon.Hashtable data, .PhotonPlayer sender, Int32 networkTime, Int16 correctPrefix) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnEvent (ExitGames.Client.Photon.EventData photonEvent) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PeerBase.DeserializeMessageAndCallback (System.Byte[] inBuff) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.EnetPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PhotonPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at PhotonHandler.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+

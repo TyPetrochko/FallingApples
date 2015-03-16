@@ -5,8 +5,8 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 
 	private Vector3 correctPos;
 	private Quaternion correctRot;
-	public Vector3 veloc;
 	private Quaternion cameraRot;
+	private Vector3 correctVelocity;
 
 	private Transform myTransform;
 	public Transform cameraTransform;
@@ -24,8 +24,8 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 		timeSinceLastUpdate= 0.0f;
 		lastPos = Vector3.zero;
 		myTransform = transform;
-		veloc = Vector3.zero;
-
+		correctVelocity = Vector3.zero;
+		rigidbody.velocity = Vector3.zero;
 		correctPos = Vector3.zero;
 		correctRot = Quaternion.identity;
 
@@ -36,16 +36,21 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!photonView.isMine){
+			/*
 			if(lastPos != correctPos){
 				// We updated correctPos, so update position/rotation
 				timeSinceLastUpdate = 0.0f;
-				myTransform.position = correctPos;
+				//myTransform.position = Vector3.Lerp(myTransform.position, correctPos, .1f);
+				//myTransform.position = correctPos;
 				lastPos = correctPos;
 			}else{
 				//Make a best guess as to where we are
 				timeSinceLastUpdate += Time.deltaTime;
-				myTransform.position = correctPos + veloc*timeSinceLastUpdate;
+				//myTransform.position = correctPos + rigidbody.velocity*timeSinceLastUpdate;
+
 			}
+			*/
+
 
 			cameraTransform.localRotation = Quaternion.Lerp(cameraTransform.localRotation, cameraRot, Time.deltaTime*RotationLerpSpeed);
 			myTransform.rotation = Quaternion.Lerp(myTransform.rotation, correctRot, Time.deltaTime*RotationLerpSpeed);
@@ -64,8 +69,10 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 		{
 			this.correctPos = (Vector3) stream.ReceiveNext();
 			this.correctRot = (Quaternion) stream.ReceiveNext();
-			this.veloc = (Vector3) stream.ReceiveNext();
+			this.correctVelocity = (Vector3) stream.ReceiveNext();
 			cameraRot= (Quaternion) stream.ReceiveNext();
+			rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, correctVelocity, .1f);
+			myTransform.position = Vector3.Lerp(myTransform.position, correctPos, .1f);
 		}
 	}
 }

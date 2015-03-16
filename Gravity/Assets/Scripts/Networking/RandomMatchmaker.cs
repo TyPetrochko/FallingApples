@@ -3,13 +3,18 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class RandomMatchmaker : MonoBehaviour {
-	public GameObject Crosshairs;
+	public bool Offline = false;
 
 	// Use this for initialization
 	void Start () {
+		PhotonNetwork.offlineMode = Offline;
 		Screen.lockCursor = true;
 		PhotonNetwork.logLevel = PhotonLogLevel.ErrorsOnly;
-		PhotonNetwork.ConnectUsingSettings("0.1");
+		if(!Offline){
+			PhotonNetwork.ConnectUsingSettings("0.1");
+		}else{
+			PhotonNetwork.CreateRoom(null);
+		}
 	}
 	
 
@@ -32,7 +37,6 @@ public class RandomMatchmaker : MonoBehaviour {
 
 	void OnJoinedRoom() 
 	{
-		Instantiate(Crosshairs, Vector3.zero, Quaternion.identity);
 		SpawnPlayer();
 	}
 	public static void SpawnPlayer(){
